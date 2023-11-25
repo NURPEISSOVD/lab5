@@ -1,0 +1,168 @@
+# print("task 1")
+# def get_keys_with_value_true(dictionary):
+#     keys = []
+#     for key in dictionary:
+#         if dictionary[key] == True:
+#             keys.append(key)
+#     return keys
+
+# dict = {'a': True, 'b': False, 'c': True}
+# keys_with_value_true = get_keys_with_value_true(dict)
+# print(keys_with_value_true) 
+# print ("TASK 2")
+# def get_unique_elements(input_list):
+#     element_count = {}  
+#     unique_elements = []  
+#     for element in input_list:
+#         if element in element_count:
+#             element_count[element] += 1
+#         else:
+#             element_count[element] = 1
+#     for element, count in element_count.items():
+#         if count == 1:
+#             unique_elements.append(element)
+    
+#     return unique_elements
+# input_list = [1, 2, 3, 1, 2, 4]
+# result = get_unique_elements(input_list)
+# print(result)  
+# print("TASK 3")
+# import datetime
+
+# def get_date_in_format(date):
+#     date_object = datetime.datetime.strptime(date, '%Y.%m.%d')
+#     formatted_date = date_object.strftime('%d.%m.%Y')
+#     return formatted_date
+
+# input_date = '2023.10.23'
+# result = get_date_in_format(input_date)
+# print(result)
+# print("TASK 4")
+# from collections import Counter
+
+# def get_elements_with_no_more_than_two_occurrences(lst):
+  
+#     counts = Counter(lst)
+    
+#     result = [element for element, count in counts.items() if count <= 2]
+    
+#     return result
+
+
+# input_list = [1, 2, 3, 1, 2, 4]
+# result = get_elements_with_no_more_than_two_occurrences(input_list)
+# print(result) 
+
+# print("TASK 5")
+# def get_words_from_string(string):
+ 
+#     return string.split()
+
+# input_string = "This a string with a several words."
+# output_list = get_words_from_string(input_string)
+# print(output_list)
+# print("TASK 6")
+# from collections import Counter
+
+# def get_unique_elements_with_count(input_list):
+#     counts = Counter(input_list)
+#     return dict(counts)
+
+# input_list = [1, 2, 3, 1, 2, 4, 1, 2]
+# result = get_unique_elements_with_count(input_list)
+# print(result)
+# print("TASK 7")
+# def is_prime(num):
+#     if num < 2:
+#         return False
+#     for i in range(2, int(num ** 0.5) + 1):
+#         if num % i == 0:
+#             return False
+#     return True
+
+# def get_prime_numbers(n):
+#     prime_numbers = [2] 
+
+#     for num in range(3, n + 1, 2):
+#         if is_prime(num):
+#             prime_numbers.append(num)
+
+#     return prime_numbers
+
+# n = 100
+# result = get_prime_numbers(n)
+# print(result)
+# print("TASK 8")
+# def is_prime(num):
+#     if num < 2:
+#         return False
+#     for i in range(2, int(num ** 0.5) + 1):
+#         if num % i == 0:
+#             return False
+#     return True
+
+# def get_prime_numbers_in_list(numbers_list):
+#     prime_numbers = [num for num in numbers_list if is_prime(num)]
+#     return prime_numbers
+
+# input_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 27, 36, 48, 54, 67, 71, 73, 75, 83, 89, 99]
+# result = get_prime_numbers_in_list(input_list)
+# print(result)
+# print("TASK 9")
+# from datetime import datetime
+
+# def get_difference_between_dates(date1, date2):
+#     date_format = "%Y.%m.%d"
+#     date1_obj = datetime.strptime(date1, date_format)
+#     date2_obj = datetime.strptime(date2, date_format)
+#     delta = date2_obj - date1_obj
+#     return delta.days
+
+
+# date1 = "2023.10.23"
+# date2 = "2023.10.24"
+# result = get_difference_between_dates(date1, date2)
+# print(result)  
+# print("TASK 10")
+# def binary_string_to_decimal(binary_string):
+#     decimal_number = int(binary_string, 2)
+#     return decimal_number
+
+# binary_string = "10110011"
+# result = binary_string_to_decimal(binary_string)
+# print(result)
+# print("TASK 11")
+# import math
+
+# def is_perfect_square(num):
+#     if num < 0:
+#         return False
+#     sqrt = math.isqrt(num)
+#     return sqrt * sqrt == num
+
+# def perfect_squares(numbers):
+#     perfect_square_list = [num for num in numbers if is_perfect_square(num)]
+#     return perfect_square_list
+# input_numbers = [4, 25, 81, 10, 9, 16]
+# result = perfect_squares(input_numbers)
+# print(result)
+# print("TASK 12")
+# def sort_by_price(shopping_list):
+#     sorted_list = sorted(shopping_list, key=lambda item: item["цена"])
+#     return sorted_list
+
+# shopping_list = [
+#     {"название": "Яблоко", "цена": 100},
+#     {"название": "Банан", "цена": 50},
+#     {"название": "Апельсин", "цена": 20}
+# ]
+
+# sorted_shopping_list = sort_by_price(shopping_list)
+# print(sorted_shopping_list)
+# print("TASK 13")
+#def get_words_starting_with_vowel(words):
+#    return [word for word in words if word[0].lower() in ['a', 'e', 'i', 'o', 'u']]
+
+#word_list = ["apple", "banana", "orange", "bear", "cat"]
+#result = get_words_starting_with_vowel(word_list)
+#print(result)  
