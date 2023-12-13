@@ -1,10 +1,10 @@
-# print("TASK 1")
-# def read_file_line_by_line(file_path: str) -> None:
-#     with open(file_path, 'r') as file:
-#         for line in file:
-#             print(line.strip())
+print("TASK 1")
+def read_file_line_by_line(file_path: str) -> None:
+    with open(file_path, 'r') as file:
+        for line in file:
+            print(line.strip())
             
-# read_file_line_by_line('text1.txt')
+read_file_line_by_line('text1.txt')
 # print("TASK 2")
 # import random
 
@@ -139,31 +139,31 @@
 #         print(f"Error: {e}")
 # file_path = 'text1.txt'  
 # display_corrected_content(file_path)
-print("task10")
-def count_occurrences_A_B(file_path):
-    try:
-        with open(file_path, 'r') as file:
+# print("task10")
+# def count_occurrences_A_B(file_path):
+#     try:
+#         with open(file_path, 'r') as file:
         
-            content = file.read()
+#             content = file.read()
 
            
-            count_A = 0
-            count_B = 0
+#             count_A = 0
+#             count_B = 0
 
-            for char in content:
+#             for char in content:
         
-                if char == 'A' or char == 'a':
-                    count_A += 1
-                elif char == 'B' or char == 'b':
-                    count_B += 1
+#                 if char == 'A' or char == 'a':
+#                     count_A += 1
+#                 elif char == 'B' or char == 'b':
+#                     count_B += 1
 
-            print(f" 'A' and 'a': {count_A}")
-            print(f" 'B' and 'b': {count_B}")
+#             print(f" 'A' and 'a': {count_A}")
+#             print(f" 'B' and 'b': {count_B}")
 
-    except FileNotFoundError:
-        print(f"Error: File '{file_path}' not found.")
-    except Exception as e:
-        print(f"Error: {e}")
+#     except FileNotFoundError:
+#         print(f"Error: File '{file_path}' not found.")
+#     except Exception as e:
+#         print(f"Error: {e}")
 
-file_path = 'text1.txt'  
-count_occurrences_A_B(file_path)
+# file_path = 'text1.txt'  
+# count_occurrences_A_B(file_path)
