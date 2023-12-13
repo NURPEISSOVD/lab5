@@ -1,0 +1,117 @@
+import requests
+import random
+import json
+
+# Задание 1: Работа с ToDo API
+
+class ToDo:
+    def __init__(self, user_id, title, completed):
+        self.user_id = user_id
+        self.title = title
+        self.completed = completed
+
+def get_todo_by_id(post_id):
+    url = f"https://jsonplaceholder.typicode.com/todos/{post_id}"
+    response = requests.get(url)
+
+    if response.status_code >= 400:
+        print(f"Ошибка GET-запроса: {response.status_code}")
+        return None
+    else:
+        todo_data = response.json()
+        print(todo_data)
+        return ToDo(user_id=todo_data['userId'], title=todo_data['title'], completed=todo_data['completed'])
+
+def create_todo(todo_object):
+    todo_dict = {
+        "userId": todo_object.user_id,
+        "title": todo_object.title,
+        "completed": todo_object.completed
+    }
+
+    post_response = requests.post("https://jsonplaceholder.typicode.com/todos", json=todo_dict)
+
+    if post_response.status_code >= 400:
+        print(f"Ошибка POST-запроса: {post_response.status_code}")
+    else:
+        print(post_response.json())
+
+def update_todo(chosen_id, updated_todo_object):
+    updated_todo_dict = {
+        "userId": updated_todo_object.user_id,
+        "title": updated_todo_object.title,
+        "completed": updated_todo_object.completed
+    }
+
+    put_response = requests.put(f"https://jsonplaceholder.typicode.com/todos/{chosen_id}", json=updated_todo_dict)
+
+    if put_response.status_code >= 400:
+        print(f"Ошибка PUT-запроса: {put_response.status_code}")
+    else:
+        print(put_response.json())
+
+# Задание 2: Исследование персонажа Rick and Morty
+
+def explore_character():
+    character_id = random.randint(1, 826)
+    character_url = f"https://rickandmortyapi.com/api/character/{character_id}"
+
+    character_response = requests.get(character_url)
+
+    if character_response.status_code >= 400:
+        print(f"Ошибка GET-запроса для персонажа: {character_response.status_code}")
+        return
+
+    character_data = character_response.json()
+    print(character_data)
+
+    with open(f"info_character_{character_id}.json", "w") as file:
+        json.dump(character_data, file)
+
+    episode_urls = character_data.get('episode', [])
+    all_episodes_file = f"all_episodes_with_character_{character_id}.json"
+
+    for episode_url in episode_urls:
+        episode_response = requests.get(episode_url)
+
+        if episode_response.status_code >= 400:
+            print(f"Ошибка GET-запроса для эпизода: {episode_response.status_code}")
+            continue
+
+        episode_data = episode_response.json()
+        episode_name = episode_data.get('name', 'Unknown Episode')
+        print(f"Исследован эпизод: {episode_name}")
+
+# Пример использования
+post_id = 1
+new_todo = get_todo_by_id(post_id)
+
+create_todo(new_todo)
+
+chosen_id = 1
+updated_todo = ToDo(user_id=2, title="Обновленная задача", completed=True)
+update_todo(chosen_id, updated_todo)
+
+explore_character()
+#Объяснение
+#get_todo_by_id(post_id): Отправляет запрос веб-службе JSONPlaceholder для получения информации о задаче (ToDo) с определенным идентификатором (ID).
+#Если получен успешный ответ, отображается информация о задаче. Если возникает ошибка (например, задача не была найдена), отображается сообщение об ошибке.
+#Создание и отправка новой задачи:
+
+#Создается новый объект задачи (new_todo).
+#create_todo(new_todo): Отправляет новую задачу на сервер JSONPlaceholder с помощью POST-запроса.
+#Если задача была успешно добавлена, отображается информация о ней. В случае ошибки - сообщение об ошибке.
+#Обновление задачи:
+#Создает обновленный объект задачи (updated_todo).
+#update_todo(chosen_id, updated_todo): Отправляет запрос PUT для обновления существующей задачи на сервере JSONPlaceholder.
+#Отображает обновленную информацию о задаче. Если произошла ошибка, отображется сообщение об ошибке.
+#Задание 2: Изучение персонажа Рика и Морти
+#Выбор случайного персонажа:
+#Генерирует случайный идентификатор персонажа.
+#Отправляет запрос в Rick and Morty API для получения данных о случайном персонаже.
+#Исследование и сохранение данных:
+#Отображает информацию о персонаже.
+#Сохраняет данные о персонаже в файл JSON (info_character_{character_id}.json).
+#Получение эпизодов, связанных с персонажем:
+#Извлекает URL-адреса эпизодов из данных персонажа.
+#Сохраняет идентификаторы эпизодов в файл (all_episodes_with_character_{character_id}.js
